@@ -67,6 +67,8 @@ def table_to_cqlfile(session, keyspace, tablename, flt, tableval, filep, limit=0
             return session.encoder.cql_encode_set_collection
         elif typename.startswith('list'):
             return session.encoder.cql_encode_list_collection
+        elif typename.startswith('frozen'):
+            return session.encoder.cql_encode_sequence
         else:
             return session.encoder.cql_encode_all_types
 
